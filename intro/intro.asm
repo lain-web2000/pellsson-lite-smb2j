@@ -1,3 +1,5 @@
+.export NonMaskableInterrupt
+
 HEAP_SPRITE_OFF = 17*4
 PRINCESS_SPRITE_OFF = 53*4
 HAND_SPRITE_OFF = 52*4
@@ -118,7 +120,7 @@ dont_wipe_bank_selection:
 		;
 		; Enable NMI
 		;
-		lda #$90
+		lda #%10001000
 		sta MirrorPPUCTRL
 		sta PPU_CTRL_REG1
 hang:
@@ -164,6 +166,8 @@ screen_off:
 		stx PPU_SCROLL_REG ; No scrolling
 		stx PPU_SCROLL_REG
 		stx PPU_CTRL_REG2 ; No rendering
+		lda #$00
+		sta MMC3_IRQDisable
 		lda MirrorPPUCTRL
 		and #$7F
 		sta PPU_CTRL_REG1 ; No NMI
@@ -843,5 +847,4 @@ bank_table:
 	.include "smlsound.asm"
 	.include "faxsound.asm"
 
-practice_callgate
-control_bank
+.res $C000 - *, $FF

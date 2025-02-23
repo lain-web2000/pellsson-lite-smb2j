@@ -43,5 +43,4 @@ NonMaskableInterrupt: ; Dummy
 	.export FactoryResetWRAM
 	.export UpdateGameTimer
 
-practice_callgate
-control_bank
+.res $C000 - *, $FF
