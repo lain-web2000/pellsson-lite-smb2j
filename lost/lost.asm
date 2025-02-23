@@ -15553,7 +15553,7 @@ SwitchSPR_CHR0:
 		inx
 		stx BANK_SELECTED
 		jsr SetBankFromA
-		jmp Start
+		jmp Start_I
 
 	
 InterruptRequest:

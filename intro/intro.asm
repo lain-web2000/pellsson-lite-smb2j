@@ -58,7 +58,9 @@ HEART_SPRITE = $18
 	.org $8000
 	.segment "bank1"
 
-Start:
+.export Start_I
+
+Start_I:
 		sta MirrorPPUCTRL
 		sta PPU_CTRL_REG1
 		;
