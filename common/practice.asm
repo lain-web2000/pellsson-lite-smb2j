@@ -764,17 +764,22 @@ toggle_rng_offset:
 		sta VRAM_Buffer1_Offset
 		rts
 
-CopyrightText1985:
-	.byte $21, $ed, $0e, $cf, $01, $09, $08, $05, $24, $17, $12, $17, $1d
+CopyrightText1986_L:
+	.byte $21, $ef, $0e, $cf, $01, $09, $08, $06, $24, $17, $12, $17, $1d
 	.byte $0e, $17, $0d, $18, $ff
 
-BothQuestText:
-	.byte $21, $ed, $0e, $24, $24, $24, $0b, $18, $1d, $11, $24, $1a, $1e 
-	.byte $0e, $1c, $1d, $1c, $ff
+BothEndText:
+	.byte $21, $ef, $0e, $24, $24, $0b, $18, $1d, $11, $24, $0e, $17, $0d 
+	.byte $12, $17, $10, $1c, $ff
+	
+AllStagesText:
+	.byte $21, $ef, $0e, $24, $24, $24, $24, $0a, $15, $15, $24, $1c, $1d
+	.byte $0a, $10, $0e, $1c, $ff
 	
 CategoryPointers:
-	.word CopyrightText1985
-	.word BothQuestText
+	.word CopyrightText1986_L
+	.word BothEndText
+	.word AllStagesText
 
 nuke_timer:
 		lda #0
@@ -1471,8 +1476,44 @@ ProcessLevelLoad:
 		sta WRAM_LevelFrameRuleData, x
 		dex
 		bpl @save_rule
+		lda BANK_SELECTED
+		cmp #BANK_SMBLL
+		beq @warpless_2j
 @done:
 		jmp ReturnBank
+@warpless_2j:
+		lda CompletedWorlds
+		cmp #$ff
+		bne @done
+		lda WorldNumber								 ;
+		cmp #World7									 ; Are we in World 7 or 8?
+		beq @World7Setup							 ; If yes, go and check the area number
+		cmp #World8									 ; 
+		beq @World8Setup							 ; 
+		cmp #World3									 ; Are we in World C? (ignore the label please)
+		bne @done								 	 ; No? Leave.
+@WorldCSetup:									 	 ;
+		lda HardWorldFlag							 ; Is this C-1 or 3-1?
+		beq @done									 ; get the hell out of here, 3-1 doesn't have a wrong warp.
+		lda LevelNumber								 ; Are we in C-1?
+		bne @done								 	 ; No? THEN PLEASE LEAVE I DID NOT INVITE YOU.
+		lda #$0E									 ;
+		sta EntrancePage						     ;
+		sta WRAM_LevelEntrancePage					 ;
+		bne @done								 	 ;
+@World8Setup:										 ;	
+		lda LevelNumber								 ; Are we in 8-1?
+		bne @done								 	 ; No? Go away.
+		beq @W7W8Setup								 ; Otherwise, set up the magic warps
+@World7Setup:									 	 ;
+		lda LevelNumber								 ; Are we in 7-3 or 7-4?
+		cmp #$02									 ; Yes, set up the funny.
+		bcc @done								 	 ; No, get out.
+@W7W8Setup:										 	 ;
+		lda #$06									 ;	
+		sta EntrancePage							 ;
+		sta WRAM_LevelEntrancePage					 ;
+		bne @done								 	 ;
 		
 
 
