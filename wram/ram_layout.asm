@@ -35,6 +35,8 @@ WRAM_TitleButtons:
 	.byte $00
 WRAM_RestartButtons:
 	.byte $00
+WRAM_IRQUpdateFlag:
+	.byte $00
 
 WRAM_ToSaveFile:
 WRAM_LoadedLevel:
