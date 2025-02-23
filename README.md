@@ -1,6 +1,6 @@
-# SMB & SMB2J Practice ROM
+# SMB2J Practice ROM
 
-A speedrun practice ROM for Super Mario Bros. and Super Mario Bros 2 - The Lost Levels.
+A speedrun practice ROM for Super Mario Bros 2 - The Lost Levels.
 
 For feature requests or bug reports, please visit the [issue tracker](https://github.com/lain-web2000/pellsson-irq/issues).
 
