@@ -80,7 +80,7 @@ save in Zelda (without savestates), power off the system, and load (without usin
 
 First download the desired version below:
 
-- [Version 6.0 - BPS](https://github.com/lain-web2000/pellsson-lite-smb2j/raw/master/Pellsson%206.0%20Rev%202%20Lite%20-%20SMB2J.bps)
+- [Version 6.0 - BPS](https://github.com/lain-web2000/pellsson-lite-smb2j/raw/refs/heads/main/Pellsson%206.0%20Rev%202%20Lite%20-%20SMB2J.bps)
 
 Then simply apply that BPS (using for instance Floating Lunar IPS) to the an original, unmodified version of the Super Mario Bros. 2 (Japan). The MD5 checksum for the ROM you should be using is `7f38210a8a2befb8d347523b4ff6ae7c`.
 
