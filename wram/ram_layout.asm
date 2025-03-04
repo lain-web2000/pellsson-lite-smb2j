@@ -133,7 +133,7 @@ WRAM_LostRules_L:
 	.dword 0, 0, 0, 0 ; World C
 	.dword 0, 0, 0, 0 ; World D
 	
-WRAM_NipponRules:
+WRAM_FireLostRules:
 	.dword 0, 0, 0, 0 ; World 1
 	.dword 0, 0, 0, 0 ; World 2
 	.dword 0, 0, 0, 0 ; World 3
@@ -147,8 +147,8 @@ WRAM_NipponRules:
 	.dword 0, 0, 0, 0 ; World B
 	.dword 0, 0, 0, 0 ; World C
 	.dword 0, 0, 0, 0 ; World D
-
-WRAM_NipponRules_L:
+	
+WRAM_FireLostRules_L:
 	.dword 0, 0, 0, 0 ; World 1
 	.dword 0, 0, 0, 0 ; World 2
 	.dword 0, 0, 0, 0 ; World 3
